@@ -26,7 +26,7 @@ public class ToDoAppProjectApplication {
 	@Bean // by default these are a singleton so therefore there is only a single instance. however we can change this to a prototype to have multiple instances
 	@Scope("singleton") //or we can label this as a prototype
 	public static LocalTime localTime() {
-		return LocalTime.now();
+		return LocalTime.now();//
 	}
 
 }
