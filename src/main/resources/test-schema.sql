@@ -19,7 +19,8 @@ CREATE TABLE to_do (
     due_date date,
     start_date date,
     date_complete date,
-	primary key (todo_id)
+	primary key (todo_id),
+    foreign key (user_id)
 );
 ALTER TABLE user add constraint UK_8qrhl5wlohdjoko9nrorkdjkp unique (user_name);
 ALTER TABLE user add constraint UK_8qrhl5wlohdjoko9nrorkdjkp unique (email_address);
