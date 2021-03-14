@@ -14,7 +14,7 @@ public class UserDTO {
 	
 	private String password;
 	
-	public UserDTO(int userId, String firstName, String lastName, private String userName ,String email){
+	public UserDTO(int userId, String firstName, String lastName, String userName ,String email){
 		this.userId = userId;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -22,7 +22,7 @@ public class UserDTO {
 		this.email = email;
 	}
 	
-	public UserDTO(int userId, String firstName, String lastName, private String userName ,String email, String password){
+	public UserDTO(int userId, String firstName, String lastName, String userName ,String email, String password){
 		this.userId = userId;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -32,7 +32,7 @@ public class UserDTO {
 	}
 	
 	public String getIdentification() {
-		return id + " " + userName + " " + email;
+		return userId + " " + userName + " " + email;
 		
 	}
 	
@@ -94,7 +94,7 @@ public class UserDTO {
 
 	@Override
 	public String toString() {
-		return "UserDTO [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", userName="
+		return "[userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", userName="
 				+ userName + ", email=" + email + "]";
 	}
 }
