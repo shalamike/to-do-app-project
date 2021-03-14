@@ -14,9 +14,9 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 //	//try finding the user name using this
 //	public User findbyUserName(String name);
 	
-//	//or this
+	//or this
 //	@Query("SELECT u from user u where u.user_name = ?1")
-//	public User findbyUserNameJPQL(String name);
+//	public User findbyUserNameJPQL(String user_name);
 //	need to fix one
 	
 	//selecting everything from user

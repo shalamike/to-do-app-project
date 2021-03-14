@@ -47,9 +47,9 @@ public class User {
 	private String password;
 	
 	
-//	@OneToMany(mappedBy = "Todo", fetch = FetchType.LAZY, orphanRemoval = true)
-//	@OnDelete(action = OnDeleteAction.CASCADE)
-//	private List<Todo> todos;
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, orphanRemoval = true)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private List<Todo> todos;
 	
 	public User() {
 		

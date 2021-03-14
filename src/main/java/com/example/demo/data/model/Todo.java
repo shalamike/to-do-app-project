@@ -24,9 +24,9 @@ public class Todo {
 	@Column(name = "todo_id")
 	private int todoId;
 	
-//	@ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "user_id", nullable = false)
-//	private User user;
+	@ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER)
+	@JoinColumn(name = "fk_user_id", nullable = false)
+	private User user;
 	
 	@Column(name = "task")
 	@NotNull
