@@ -1,4 +1,4 @@
-package services;
+package com.example.demo.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +71,11 @@ public class UserService {
 		
 		return userMapper.mapToDTO(updatedUser);
 	}
+	
+//	public UserDTO readByUserName(String userName) {
+//		User user = userRepository.findbyUserNameJPQL(userName);
+//		return userMapper.mapToDTO(user);
+//	}
 	
 	public boolean deleteUser(Integer id) {
 //		if(!userRepository.existsById(id)) {
