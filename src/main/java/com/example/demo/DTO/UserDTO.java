@@ -1,5 +1,8 @@
 package com.example.demo.DTO;
 
+import java.util.List;
+
+
 public class UserDTO {
 	
 	private int userId;
@@ -14,6 +17,9 @@ public class UserDTO {
 	
 	private String password;
 	
+	private List<TodoDTO> todos;
+	
+	
 	public UserDTO(int userId, String firstName, String lastName, String userName ,String email){
 		this.userId = userId;
 		this.firstName = firstName;
@@ -24,6 +30,14 @@ public class UserDTO {
 	
 	public UserDTO(int userId, String firstName, String lastName, String userName ,String email, String password){
 		this.userId = userId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.userName = userName;
+		this.email = email;
+		this.password = password;
+	}
+	
+	public UserDTO(String firstName, String lastName, String userName ,String email, String password){
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;

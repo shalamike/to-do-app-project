@@ -136,6 +136,14 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public List<Todo> getTodos(){
+		return this.todos;
+	}
+	
+	public void SetTodods(List<Todo> todos) {
+		this.todos = todos;
+	}
 
 	@Override
 	public int hashCode() {

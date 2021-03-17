@@ -11,15 +11,16 @@ import com.example.demo.data.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer>{
 	
-//	//try finding the user name using this
-//	public User findbyUserName(String name);
+//	derived query
+	public User findByUserName(String name);
 	
-	//or this
-//	@Query("SELECT u from user u where u.user_name = ?1")
-//	public User findbyUserNameJPQL(String user_name);
+// jpql query
+	@Query("SELECT u from User u where u.userId = ?1")
+	public User findUserById(Integer user_id);
 //	need to fix one
 	
 	//selecting everything from user
+//native query
 	@Query(value = "SELECT * FROM user", nativeQuery = true)
 	public List<User> getAllUsersSQL();
 }

@@ -55,14 +55,14 @@ public class Todo {
 		this.dateComplete = dateComplete;
 	}
 	
-//	public Todo(int userId, String task, String info, Date dueDate, Date startDate, Date dateComplete) {
-//		this.task = task;
-//		this.info = info;
-//		this.dueDate = dueDate;
-//		this.startDate = startDate;
-//		this.dateComplete = dateComplete;
-//	}
-//	
+	public Todo(int userId, String task, String info, Date dueDate, Date startDate, Date dateComplete) {
+		this.task = task;
+		this.info = info;
+		this.dueDate = dueDate;
+		this.startDate = startDate;
+		this.dateComplete = dateComplete;
+	}
+	
 	public Todo(int userId, String task, String info) {
 		this.task = task;
 		this.info = info;
@@ -119,13 +119,13 @@ public class Todo {
 		this.dateComplete = dateComplete;
 	}
 
-//	public User getUser() {
-//		return user;
-//	}
-//
-//	public void setUser(User user) {
-//		this.user = user;
-//	}
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	@Override
 	public int hashCode() {
@@ -137,7 +137,7 @@ public class Todo {
 		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
 		result = prime * result + ((task == null) ? 0 : task.hashCode());
 		result = prime * result + todoId;
-//		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -177,19 +177,12 @@ public class Todo {
 			return false;
 		if (todoId != other.todoId)
 			return false;
-//		if (user == null) {
-//			if (other.user != null)
-//				return false;
-//		} else if (!user.equals(other.user))
-//			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
 		return true;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
 }

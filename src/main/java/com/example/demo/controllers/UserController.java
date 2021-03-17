@@ -31,6 +31,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+
 import org.springframework.hateoas.EntityModel;
 
 
@@ -45,6 +48,7 @@ import org.springframework.stereotype.Component;
 
 
 import com.example.demo.DTO.UserDTO;
+import com.example.demo.data.model.User;
 import com.example.demo.hateoas.assemblers.UserDTOModelAssembler;
 import com.example.demo.services.UserService;
 
@@ -91,8 +95,21 @@ public class UserController {
 		
 		return new ResponseEntity<UserDTO>(user, HttpStatus.OK);
 	}
-
-
-
+	
+	
+	@PostMapping
+	public ResponseEntity<?> createUser(@RequestBody User user){
+		UserDTO newUser = userService.createUser(user);
+		
+		EntityModel<UserDTO> model = userDTOModelAssembler.toModel(newUser);
+		
+		//ResponseEntity<?> response = ResponseEntity.created(model.getRequiredLink(IanaLinkRelations.SELF).toUri()).body(model);
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("location", String.valueOf(newUser.getUserId()));
+		return new ResponseEntity<UserDTO>(newUser, headers, HttpStatus.CREATED);
+		}
+	
+	
 
 }
