@@ -19,6 +19,9 @@ public class UserDTO {
 	
 	private List<TodoDTO> todos;
 	
+	public UserDTO() {
+		
+	}
 	
 	public UserDTO(int userId, String firstName, String lastName, String userName ,String email, List<TodoDTO> todos){
 		this.userId = userId;

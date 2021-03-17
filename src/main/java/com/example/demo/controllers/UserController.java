@@ -110,6 +110,27 @@ public class UserController {
 		return new ResponseEntity<UserDTO>(newUser, headers, HttpStatus.CREATED);
 		}
 	
+	@PutMapping
+	public ResponseEntity<?> updateUser(@PathVariable("id") Integer id, @RequestBody User user){
+		UserDTO updatedUser = userService.updateUser(id, user);
+	
+		
+		EntityModel<UserDTO> model = userDTOModelAssembler.toModel(updatedUser);
+		
+		HttpHeaders headers = new HttpHeaders();
+		// Link from model is turned into URI, and then into String
+		headers.add("Location", model.getRequiredLink(IanaLinkRelations.SELF).toUri().toString());
+		
+		return new ResponseEntity<EntityModel<UserDTO>>(model, headers, HttpStatus.OK);
+		}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deleteUser(@PathVariable("id") Integer id){
+		UserDTO user = userService.readById(id);
+		
+		return new ResponseEntity<Boolean>(userService.deleteUser(id), HttpStatus.NO_CONTENT);
+	}
+	
 	
 
 }

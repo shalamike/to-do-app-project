@@ -25,7 +25,7 @@ public class Todo {
 	private int todoId;
 	
 	@ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER)
-	@JoinColumn(name = "fk_user_id", nullable = false)
+	//@JoinColumn(name = "fk_user_id", nullable = false)
 	private User user;
 	
 	@Column(name = "task")
@@ -46,13 +46,14 @@ public class Todo {
 	
 	
 	
-	public Todo(int todoId, int userId, String task, String info, Date dueDate, Date startDate, Date dateComplete) {
+	public Todo(int todoId, String task, String info, Date dueDate, Date startDate, Date dateComplete, User user) {
 		this.todoId = todoId;
 		this.task = task;
 		this.info = info;
 		this.dueDate = dueDate;
 		this.startDate = startDate;
 		this.dateComplete = dateComplete;
+		this.user = user;
 	}
 	
 	public Todo(int userId, String task, String info, Date dueDate, Date startDate, Date dateComplete) {
