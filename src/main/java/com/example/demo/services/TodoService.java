@@ -41,7 +41,7 @@ public class TodoService {
 	public TodoDTO readByTask(String task) {
 		Todo todo = todoRepository.getTaskByName(task);
 		
-		return todoMapper.mapToDTO(todo)
+		return todoMapper.mapToDTO(todo);
 	}
 	
 	public TodoDTO createTodo(Todo todo) {
