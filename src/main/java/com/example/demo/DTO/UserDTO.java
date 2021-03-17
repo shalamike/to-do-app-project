@@ -20,12 +20,13 @@ public class UserDTO {
 	private List<TodoDTO> todos;
 	
 	
-	public UserDTO(int userId, String firstName, String lastName, String userName ,String email){
+	public UserDTO(int userId, String firstName, String lastName, String userName ,String email, List<TodoDTO> todos){
 		this.userId = userId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;
 		this.email = email;
+		this.todos = todos;
 	}
 	
 	public UserDTO(int userId, String firstName, String lastName, String userName ,String email, String password){
@@ -108,7 +109,7 @@ public class UserDTO {
 
 	@Override
 	public String toString() {
-		return "[userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", userName="
-				+ userName + ", email=" + email + "]";
+		return "UserDTO [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", userName="
+				+ userName + ", email=" + email + ", password=" + password + ", todos=" + todos.toString() + "]";
 	}
 }

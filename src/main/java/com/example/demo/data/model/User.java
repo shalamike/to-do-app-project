@@ -55,7 +55,7 @@ public class User {
 		
 	}
 	
-	public User(int userId, String firstName, String lastName, String userName, String email, String password) {
+	public User(int userId, String firstName, String lastName, String userName, String email, String password, List<Todo> todos) {
 		super();
 		this.userId = userId;
 		this.firstName = firstName;
@@ -63,6 +63,7 @@ public class User {
 		this.userName = userName;
 		this.email = email;
 		this.password = password;
+		this.todos = todos;
 	}
 	
 	public User(String firstName, String lastName, String userName, String email, String password) {
