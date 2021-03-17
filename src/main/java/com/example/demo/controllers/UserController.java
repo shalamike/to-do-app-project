@@ -111,17 +111,17 @@ public class UserController {
 		}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<UserDTO> updateUser(@PathVariable("id") int id, @RequestBody User user){
+	public ResponseEntity<?> updateUser(@PathVariable("id") int id, @RequestBody User user){
 		UserDTO updatedUser = userService.updateUser(id, user);
 	
 		
-//		EntityModel<UserDTO> model = userDTOModelAssembler.toModel(updatedUser);
+		EntityModel<UserDTO> model = userDTOModelAssembler.toModel(updatedUser);
 		
-//		HttpHeaders headers = new HttpHeaders();
+		HttpHeaders headers = new HttpHeaders();
 		// Link from model is turned into URI, and then into String
-//		headers.add("Location", model.getRequiredLink(IanaLinkRelations.SELF).toUri().toString());
+		headers.add("Location", model.getRequiredLink(IanaLinkRelations.SELF).toUri().toString());
 		
-		return new ResponseEntity<UserDTO>(updatedUser, HttpStatus.OK);
+		return new ResponseEntity<EntityModel<UserDTO>>(model, headers, HttpStatus.OK);
 		}
 	
 	@DeleteMapping("/{id}")
