@@ -60,6 +60,7 @@ public class UserService {
 //		if (userInDbOpt.isPresent()) {
 //			userInDb = userInDbOpt.get();
 //		} else {
+//
 //		}	
 		userInDb.setFirstName(user.getFirstName());
 		userInDb.setLastName(user.getLastName());
@@ -72,10 +73,10 @@ public class UserService {
 		return userMapper.mapToDTO(updatedUser);
 	}
 	
-//	public UserDTO readByUserName(String userName) {
-//		User user = userRepository.findbyUserNameJPQL(userName);
-//		return userMapper.mapToDTO(user);
-//	}
+	public UserDTO readByUserName(String userName) {
+		User user = userRepository.findByUserName(userName);
+		return userMapper.mapToDTO(user);
+	}
 	
 	public boolean deleteUser(Integer id) {
 //		if(!userRepository.existsById(id)) {

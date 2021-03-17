@@ -66,6 +66,16 @@ public class User {
 		this.todos = todos;
 	}
 	
+	public User(int userId, String firstName, String lastName, String userName, String email, String password) {
+		super();
+		this.userId = userId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.userName = userName;
+		this.email = email;
+		this.password = password;
+	}
+	
 	public User(String firstName, String lastName, String userName, String email, String password) {
 		super();
 		this.firstName = firstName;

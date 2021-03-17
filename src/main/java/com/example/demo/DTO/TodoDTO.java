@@ -17,6 +17,8 @@ public class TodoDTO {
 	
 	private Date dateComplete;
 	
+	private UserDTO user;
+	
 	public TodoDTO() {
 		super();
 	}
