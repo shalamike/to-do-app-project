@@ -96,6 +96,19 @@ public class UserController {
 		return new ResponseEntity<UserDTO>(user, HttpStatus.OK);
 	}
 	
+	@GetMapping("/userName/{name}")
+	public ResponseEntity<UserDTO> readByUserName(@PathVariable("name") String name) {
+		// @RequestParam grabs a query parameter from our path
+		// - In this case, it is called `id` and MUST BE SUPPLIED
+		// - We can make it optional like so: @RequestParam(name = "id", required = false)
+		//   - Or @RequestParam(name = "id", defaultValue = "")
+		
+		
+		UserDTO user = userService.readByUserName(name);
+		
+		return new ResponseEntity<UserDTO>(user, HttpStatus.OK);
+	}
+	
 	
 	@PostMapping
 	public ResponseEntity<?> createUser(@RequestBody User user){

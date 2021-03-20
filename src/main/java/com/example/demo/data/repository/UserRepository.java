@@ -21,6 +21,6 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 	
 	//selecting everything from user
 //native query
-	@Query(value = "SELECT * FROM user", nativeQuery = true)
+	@Query(value = "SELECT * FROM user, to_do WHERE user.user_id = todo.fk_user_id", nativeQuery = true)
 	public List<User> getAllUsersSQL();
 }

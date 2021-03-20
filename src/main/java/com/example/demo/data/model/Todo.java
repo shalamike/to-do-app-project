@@ -57,6 +57,7 @@ public class Todo {
 	}
 	
 	public Todo(int userId, String task, String info, Date dueDate, Date startDate, Date dateComplete) {
+		this.user.setUserId(1);
 		this.task = task;
 		this.info = info;
 		this.dueDate = dueDate;
@@ -64,11 +65,10 @@ public class Todo {
 		this.dateComplete = dateComplete;
 	}
 	
-	public Todo(int userId, String task, String info) {
-		this.task = task;
-		this.info = info;
-
-}
+	
+	public Todo() {
+		
+	}
 
 	public int getTodoId() {
 		return todoId;
