@@ -36,7 +36,7 @@ public class UserControllerIntegrationTest {
 	private ObjectMapper objectMapper; //converts objects to json and back
 	
 	private User validUser = new User(1, "leroy", "jenkins", "lrjkens", "lrj@email.com", "password");
-	private UserDTO validUserDTO = new UserDTO(1, "leroy", "jenkins", "lrjkens", "lrj@email.com", "password");
+	private UserDTO validUserDTO = new UserDTO(1, "leroy", "jenkins", "lrjkens", "lrj@email.com");
 	
 	private List<User> validUsers = List.of(validUser);
 	private List<UserDTO> validUserDTOs= List.of(validUserDTO);
@@ -44,7 +44,7 @@ public class UserControllerIntegrationTest {
 	@Test
 	public void createUserTest() throws Exception{
 		User userToSave = new User("adam", "adamson", "adson", "ad@email.com", "notpassword");
-		UserDTO expectedUser = new  UserDTO(1, "finely", "finch", "finfin", "fin@email.com", "passwordyes");
+		UserDTO expectedUser = new  UserDTO(1, "adam", "adamson", "adson", "ad@email.com");
 		
 		//create a mock to send a post request
 		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.POST, "/user");
@@ -56,9 +56,10 @@ public class UserControllerIntegrationTest {
 		
 		ResultMatcher statusMatcher =  MockMvcResultMatchers.status().isCreated();
 		
-		ResultMatcher contentMatcher = MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(expectedUser)); //expecting a user back as a json object written as a string
+		ResultMatcher contentMatcher = MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(expectedUser)); 
+		//expecting a user back as a json object written as a string
 		
-		ResultMatcher headerMatcher = MockMvcResultMatchers.header().string("Location", "2");
+		ResultMatcher headerMatcher = MockMvcResultMatchers.header().string("Location", "1"); //id of where the user is located, in this case 
 		
 		mvc.perform(mockRequest).andExpect(statusMatcher).andExpect(contentMatcher).andExpect(headerMatcher);
 		

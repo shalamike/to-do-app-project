@@ -50,7 +50,7 @@ public class UserControllerUnitTest {
 	@BeforeEach
 	public void init() {
 		validUser = new User(1, "freddy", "goodson", "fredson", "frg@email.com", "password");
-		validUserDTO = new UserDTO(1, "freddy", "goodson", "fredson", "frg@email.com", "password");
+		validUserDTO = new UserDTO(1, "freddy", "goodson", "fredson", "frg@email.com");
 		
 		users = new ArrayList<User>();
 		userDTOs = new ArrayList<UserDTO>();
