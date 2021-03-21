@@ -11,16 +11,15 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import com.example.demo.DTO.TodoDTO;
 import com.example.demo.DTO.UserDTO;
+import com.example.demo.data.model.Todo;
 import com.example.demo.data.model.User;
 import com.example.demo.data.repository.UserRepository;
 import com.example.demo.mappers.UserMapper;
@@ -50,8 +49,11 @@ public class UserServiceUnitTest {
 	private User validUser;
 	private UserDTO validUserDTO;
 	
+	
 	@BeforeEach
 	public void init() {
+		
+		
 		validUser = new User(1, "bob", "ronson", "bobro", "bob@email.com", "password" );
 		validUserDTO = new UserDTO(1, "bob", "ronson", "bobro", "bob@email.com");
 		
@@ -88,5 +90,43 @@ public class UserServiceUnitTest {
 		UserDTO testToDTO = userService.updateUser(validUser.getUserId(), UpdatedUser);
 		
 		assertThat(updatedUserDTO).isEqualTo(testToDTO);
+	}
+	
+	@Test 
+	public void CreateUserTest() {
+		when(userRepository.save(Mockito.any(User.class))).thenReturn(validUser);
+		when(userMapper.mapToDTO(Mockito.any(User.class))).thenReturn(validUserDTO);
+		
+		assertThat(validUserDTO).isEqualTo(userService.createUser(validUser));
+		
+		verify(userRepository,times(1)).save(Mockito.any(User.class));
+		verify(userMapper, times(1)).mapToDTO(Mockito.any(User.class));
+	}
+	
+	@Test
+	public void readUserByIdTest() {
+		when(userRepository.findById(Mockito.any(Integer.class))).thenReturn(Optional.of(validUser));
+		when(userMapper.mapToDTO(validUser)).thenReturn(validUserDTO);
+		
+		assertThat(validUser).isEqualTo(userService.readById(validUser.getUserId()));
+	}
+	
+	@Test
+	public void readByUserNameTest() {
+		when(userRepository.findByUserName(Mockito.any(String.class))).thenReturn(validUser);
+		when(userMapper.mapToDTO(validUser)).thenReturn(validUserDTO);
+		
+		assertThat(validUser).isEqualTo(userService.readByUserName(validUser.getUserName()));
+	}
+	
+	
+	@Test
+	public void DeleteUserTest() {
+		when(userRepository.existsById(Mockito.any(Integer.class))).thenReturn(true).thenReturn(false);
+		
+		assertThat(true).isEqualTo(userService.deleteUser(1));
+		
+		verify(userRepository, times(2)).existsById(Mockito.any(Integer.class));
+		verify(userRepository, times(1)).deleteById(Mockito.any(Integer.class));
 	}
 }

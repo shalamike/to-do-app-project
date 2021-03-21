@@ -16,9 +16,6 @@ CREATE TABLE to_do (
 	fk_user_id integer not null,
     task varchar(255),
     info text,
-    due_date date,
-    start_date date,
-    date_complete date,
 	primary key (todo_id),
     
 );

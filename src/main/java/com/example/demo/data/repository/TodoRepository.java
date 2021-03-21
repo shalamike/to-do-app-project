@@ -16,6 +16,10 @@ public interface TodoRepository extends JpaRepository<Todo, Integer>{
 	@Query(value = "SELECT * FROM to_do", nativeQuery = true)
 	public List<Todo> getAllTodos();
 	
+	// jpql query
+	@Query("SELECT t from Todo t where t.todoId = ?1")
+	public Todo findTodoById(Integer todo_id);
+
 	
 	//jpql query
 	@Query("Select t from Todo t where t.task = ?1")

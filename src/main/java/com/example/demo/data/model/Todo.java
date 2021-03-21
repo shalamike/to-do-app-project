@@ -35,34 +35,24 @@ public class Todo {
 	@Column(name = "info")
 	private String info;
 	
-	@Column(name = "due_date")
-	private Date dueDate;
-	
-	@Column(name = "start_date")
-	private Date startDate;
-	
-	@Column(name = "date_complete")
-	private Date dateComplete;
 	
 	
-	
-	public Todo(int todoId, String task, String info, Date dueDate, Date startDate, Date dateComplete, User user) {
+	public Todo(int todoId, String task, String info, User user) {
 		this.todoId = todoId;
 		this.task = task;
 		this.info = info;
-		this.dueDate = dueDate;
-		this.startDate = startDate;
-		this.dateComplete = dateComplete;
 		this.user = user;
 	}
 	
-	public Todo(int userId, String task, String info, Date dueDate, Date startDate, Date dateComplete) {
+	public Todo(int userId, String task, String info) {
 		this.user.setUserId(1);
 		this.task = task;
 		this.info = info;
-		this.dueDate = dueDate;
-		this.startDate = startDate;
-		this.dateComplete = dateComplete;
+
+	}
+	public Todo(String task, String info) {
+		this.task = task;
+		this.info = info;
 	}
 	
 	
@@ -96,29 +86,6 @@ public class Todo {
 		this.info = info;
 	}
 
-	public Date getDueDate() {
-		return dueDate;
-	}
-
-	public void setDueDate(Date dueDate) {
-		this.dueDate = dueDate;
-	}
-
-	public Date getStartDate() {
-		return startDate;
-	}
-
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-
-	public Date getDateComplete() {
-		return dateComplete;
-	}
-
-	public void setDateComplete(Date dateComplete) {
-		this.dateComplete = dateComplete;
-	}
 
 	public User getUser() {
 		return user;
@@ -132,10 +99,7 @@ public class Todo {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((dateComplete == null) ? 0 : dateComplete.hashCode());
-		result = prime * result + ((dueDate == null) ? 0 : dueDate.hashCode());
 		result = prime * result + ((info == null) ? 0 : info.hashCode());
-		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
 		result = prime * result + ((task == null) ? 0 : task.hashCode());
 		result = prime * result + todoId;
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
@@ -151,25 +115,10 @@ public class Todo {
 		if (getClass() != obj.getClass())
 			return false;
 		Todo other = (Todo) obj;
-		if (dateComplete == null) {
-			if (other.dateComplete != null)
-				return false;
-		} else if (!dateComplete.equals(other.dateComplete))
-			return false;
-		if (dueDate == null) {
-			if (other.dueDate != null)
-				return false;
-		} else if (!dueDate.equals(other.dueDate))
-			return false;
 		if (info == null) {
 			if (other.info != null)
 				return false;
 		} else if (!info.equals(other.info))
-			return false;
-		if (startDate == null) {
-			if (other.startDate != null)
-				return false;
-		} else if (!startDate.equals(other.startDate))
 			return false;
 		if (task == null) {
 			if (other.task != null)

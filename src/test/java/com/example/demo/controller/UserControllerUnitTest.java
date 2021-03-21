@@ -14,6 +14,7 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.HttpHeaders;
@@ -73,6 +74,31 @@ public class UserControllerUnitTest {
 		
 	}
 	
+
+	@Test
+	public void getAllUserTestt() {
+		EntityModel<UserDTO> userEntityModel = EntityModel.of(validUserDTO, 
+				linkTo(methodOn(UserController.class).getUserById(validUserDTO.getUserId())).withSelfRel(),
+				linkTo(methodOn(UserController.class).getAllUsers()).withRel("users"));
+		
+		List<EntityModel<UserDTO>> entityModels = List.of(userEntityModel);
+		
+		CollectionModel<EntityModel<UserDTO>> collectionModel = CollectionModel.of(entityModels, linkTo(methodOn(UserController.class).getAllUsers()).withSelfRel());
+		
+		when(userService.readAllUsers()).thenReturn(userDTOs);
+		when(userDTOModelAssembler.toModel(validUserDTO)).thenReturn(userEntityModel);
+
+		ResponseEntity<CollectionModel<EntityModel<UserDTO>>> response1 = 
+				new ResponseEntity<CollectionModel<EntityModel<UserDTO>>>(collectionModel, HttpStatus.OK);
+		
+		
+		
+		assertThat(response1).isEqualTo(userController.getAllUsers());
+		
+		verify(userService, times(1)).readAllUsers();
+		verify(userDTOModelAssembler, times(1)).toModel(validUserDTO);
+	}
+	
 	@Test
 	public void CreateUserTest() {
 		EntityModel<UserDTO> userEntityModel = EntityModel.of(validUserDTO, 
@@ -109,7 +135,7 @@ public class UserControllerUnitTest {
 	}
 	
 	@Test
-	public void deleteDuckTest() {
+	public void DeleteUserTest() {
 		// We only need to mock deleteDuck
 		when(userService.deleteUser(Mockito.any(Integer.class))).thenReturn(true);
 		
@@ -125,7 +151,7 @@ public class UserControllerUnitTest {
 	}
 	
 	@Test
-	public void updateDuckTest() {
+	public void updateUserTest() {
 		// mock the update duck method
 		when(userService.updateUser(Mockito.any(Integer.class), Mockito.any(User.class)))
 			.thenReturn(validUserDTO);

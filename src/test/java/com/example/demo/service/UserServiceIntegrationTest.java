@@ -56,12 +56,28 @@ public class UserServiceIntegrationTest {
 		userDTOs.add(validUserDTO);	
 	}
 	
-	@ElementCollection(fetch = FetchType.LAZY)
 	@Test
 	public void readAllUsersTest() {
 		List<UserDTO> usersInDb = userService.readAllUsers();
 		
 		assertThat(userDTOs).isEqualTo(usersInDb);
+	}
+	
+	@Test
+	public void createUserTest() {
+		User newUser = new User("leroy", "jenkins", "lrjking", "LEEERROOOYY@email.com", "passwordnot" );
+		UserDTO expectedUserDto = userMapper.mapToDTO(newUser);
+		
+		UserDTO savedUser = userService.createUser(newUser);
+		expectedUserDto.setUserId(savedUser.getUserId());
+		
+		assertThat(savedUser).isEqualTo(expectedUserDto);
+		
+	}
+	
+	@Test
+	public void deleteUserTest() {
+		assertThat(userService.deleteUser(1)).isEqualTo(true);
 	}
 
 }

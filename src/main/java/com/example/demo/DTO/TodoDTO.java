@@ -11,26 +11,17 @@ public class TodoDTO {
 	
 	private String info;
 	
-	private Date dueDate;
-	
-	private Date startDate;
-	
-	private Date dateComplete;
-	
 	private UserDTO user;
 	
 	public TodoDTO() {
 		super();
 	}
 	
-	public TodoDTO(int todoId, String task, String info, Date dueDate, Date startDate, Date dateComplete) {
+	public TodoDTO(int todoId, String task, String info) {
 		super();
 		this.todoId = todoId;
 		this.task = task;
 		this.info = info;
-		this.dueDate = dueDate;
-		this.startDate = startDate;
-		this.dateComplete = dateComplete;
 	}
 
 	public int getTodoId() {
@@ -57,44 +48,18 @@ public class TodoDTO {
 		this.info = info;
 	}
 
-	public Date getDueDate() {
-		return dueDate;
-	}
 
-	public void setDueDate(Date dueDate) {
-		this.dueDate = dueDate;
-	}
-
-	public Date getStartDate() {
-		return startDate;
-	}
-
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-
-	public Date getDateComplete() {
-		return dateComplete;
-	}
-
-	public void setDateComplete(Date dateComplete) {
-		this.dateComplete = dateComplete;
-	}
 
 	@Override
 	public String toString() {
-		return "TodoDTO [todoId=" + todoId + ", task=" + task + ", info=" + info + ", dueDate=" + dueDate
-				+ ", startDate=" + startDate + ", dateComplete=" + dateComplete + "]";
+		return "TodoDTO [todoId=" + todoId + ", task=" + task + ", info=" + info +"]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((dateComplete == null) ? 0 : dateComplete.hashCode());
-		result = prime * result + ((dueDate == null) ? 0 : dueDate.hashCode());
 		result = prime * result + ((info == null) ? 0 : info.hashCode());
-		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
 		result = prime * result + ((task == null) ? 0 : task.hashCode());
 		result = prime * result + todoId;
 		return result;
@@ -109,25 +74,10 @@ public class TodoDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		TodoDTO other = (TodoDTO) obj;
-		if (dateComplete == null) {
-			if (other.dateComplete != null)
-				return false;
-		} else if (!dateComplete.equals(other.dateComplete))
-			return false;
-		if (dueDate == null) {
-			if (other.dueDate != null)
-				return false;
-		} else if (!dueDate.equals(other.dueDate))
-			return false;
 		if (info == null) {
 			if (other.info != null)
 				return false;
 		} else if (!info.equals(other.info))
-			return false;
-		if (startDate == null) {
-			if (other.startDate != null)
-				return false;
-		} else if (!startDate.equals(other.startDate))
 			return false;
 		if (task == null) {
 			if (other.task != null)

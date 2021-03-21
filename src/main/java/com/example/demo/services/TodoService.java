@@ -35,6 +35,7 @@ public class TodoService {
 	}
 	public TodoDTO readByID(Integer todoId) {
 		Optional<Todo> todo = todoRepository.findById(todoId);
+		
 		return todoMapper.mapToDTO(todo.get());
 	}
 	
@@ -55,10 +56,6 @@ public class TodoService {
 		Todo todoIndb = TodoInDbOpt.get();
 		todoIndb.setTask(todo.getTask());
 		todoIndb.setUser(todo.getUser());
-		todoIndb.setInfo(todo.getInfo());
-		todoIndb.setStartDate(todo.getStartDate());
-		todoIndb.setDueDate(todo.getDueDate());
-		todoIndb.setDateComplete(todo.getDateComplete());
 		
 		Todo updatedTodo = todoRepository.save(todoIndb);
 		return todoMapper.mapToDTO(updatedTodo);
