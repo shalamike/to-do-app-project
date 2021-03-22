@@ -88,7 +88,11 @@ automation of those user inputs where we can automate the simulation of user inp
 
 	}
 
-## Deployment
+## development board
+
+the link to the jira board can be found below
+
+https://team-1611740724616.atlassian.net/jira/software/projects/TDLFW/boards/4
 
 when running integration tests, be sure to change to URL to the correct location of your local host machine 
 
@@ -102,7 +106,7 @@ We use [SemVer](http://semver.org/) for versioning.
 
 ## Authors
 
-* **Chris Perrins** - *Initial work* - [christophperrins](https://github.com/christophperrins)
+* **Michael Shalaby - shalamike**
 
 ## License
 
