@@ -44,17 +44,7 @@ public class Todo {
 		this.user = user;
 	}
 	
-	public Todo(int userId, String task, String info) {
-		this.user.setUserId(1);
-		this.task = task;
-		this.info = info;
 
-	}
-	public Todo(String task, String info) {
-		this.task = task;
-		this.info = info;
-	}
-	
 	
 	public Todo() {
 		
@@ -95,44 +85,44 @@ public class Todo {
 		this.user = user;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((info == null) ? 0 : info.hashCode());
-		result = prime * result + ((task == null) ? 0 : task.hashCode());
-		result = prime * result + todoId;
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Todo other = (Todo) obj;
-		if (info == null) {
-			if (other.info != null)
-				return false;
-		} else if (!info.equals(other.info))
-			return false;
-		if (task == null) {
-			if (other.task != null)
-				return false;
-		} else if (!task.equals(other.task))
-			return false;
-		if (todoId != other.todoId)
-			return false;
-		if (user == null) {
-			if (other.user != null)
-				return false;
-		} else if (!user.equals(other.user))
-			return false;
-		return true;
-	}
+//	@Override
+//	public int hashCode() {
+//		final int prime = 31;
+//		int result = 1;
+//		result = prime * result + ((info == null) ? 0 : info.hashCode());
+//		result = prime * result + ((task == null) ? 0 : task.hashCode());
+//		result = prime * result + todoId;
+//		result = prime * result + ((user == null) ? 0 : user.hashCode());
+//		return result;
+//	}
+//
+//	@Override
+//	public boolean equals(Object obj) {
+//		if (this == obj)
+//			return true;
+//		if (obj == null)
+//			return false;
+//		if (getClass() != obj.getClass())
+//			return false;
+//		Todo other = (Todo) obj;
+//		if (info == null) {
+//			if (other.info != null)
+//				return false;
+//		} else if (!info.equals(other.info))
+//			return false;
+//		if (task == null) {
+//			if (other.task != null)
+//				return false;
+//		} else if (!task.equals(other.task))
+//			return false;
+//		if (todoId != other.todoId)
+//			return false;
+//		if (user == null) {
+//			if (other.user != null)
+//				return false;
+//		} else if (!user.equals(other.user))
+//			return false;
+//		return true;
+//	}
 
 }
