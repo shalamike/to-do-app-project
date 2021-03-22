@@ -4,9 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <title>Todos</title>
+    <Style>
+        table, td, th{
+            border: 2px solid black;
+            padding: 2px;
+        }
+    </Style>
+    <title>Users</title>
 </head>
 <body>
+   <form action = "todos.html">
+       <button type="submit" class="btn-success" id="todoButton">See Todos</button>
+   </form>
     <div class="container">
         <h2 class="text-center"> The users</h1>
         <div class="row">
@@ -17,64 +26,45 @@
                 <input type="text" class="form-control" id="userName" placeholder="userName:"/>
                 <input type="text" class="form-control" id="email" placeholder="email:"/>
                 <input type="text" class="form-control" id="password" placeholder="password:"/>
-
-                <input type = "reset" value="reset">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md text-center">
-                <br/>
                 <button class="btn btn-primary" id="fetchUsers" onclick="fetchAllUsers()"> get all users</button>
                 <button class="btn btn-primary" id="createUser" onclick="createUser()"> create User</button>
             </div>
         </div>
-        <div class="history">
-            <table id="userResultSet">
-                <tr>
-                    <th>userId</th>
-                    <th>first Name</th>
-                    <th>last name</th>
-                    <th>username</th>
-                    <th>email</th>
-                </tr>
-            </table>            
-        </div>
-
-        <div class="container">
-            <h1 class="text-center"> The Todos</h1>
-            <div class="row">
-                <div class="col-md">
-                    <h2 class=> create todo</h2>
-                    <input type="text" class="form-control" id="task" placeholder="task:"/>
-                    <input type="text" class="form-control" id="info" placeholder="more information about the task at hand"/>
-                    <input type="text" class="form-control" id="startDate" placeholder="when are you going to start:"/>
-                    <input type="text" class="form-control" id="dueDate" placeholder="when does it need to be completed:"/>
-                    <input type="text" class="form-control" id="dateComplete" placeholder="when was it completed:"/>
-                    <input type="text" class="form-control" id="userId" placeholder="who is working on this task"/>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md text-center">
-                    <br/>
-                    <button class="btn btn-primary" id="fetchUsers" onclick="fetchTodos();"> fetch all to-dos</button>
-                    <button class="btn btn-primary" id="fetchTodos" onclick="createToDos();"> create a to-do</button>
-                </div>
-            </div>
-        <!-- <div class="row">
-            <div class="col-md">
-                <br/>
-                <input type="text" class="form-control" id="result" placeholder="Result" disabled/>
-            </div>
-        </div> -->
         <div class="row">
             <div class="col-md text-center">
                 <br/>
-                <button class="btn btn-danger" id="clearValues" onclick="clearVals()">Clear Values</button>
-                <button class="btn btn-danger" id="clearHistory" onclick="clearHistory()">Clear History</button>
+                <input type="number" class="form-control" id="updateOrDelete" placeholder="update or delete user by id:"/>
+                <button class="btn btn-primary" id="deleteUser" onclick="deleteUser()"> delete user by id</button>
+                <button class="btn btn-primary" id="updateUser" onclick="updateUser()"> update user by id</button>
+                <button class="btn btn-primary" id="getUserTasks" onclick="getUserTasks()"> get user Tasks</button>
             </div>
         </div>
 
-    <script src="./script.js"></script>
+        <form>
+            <div class="history">
+                <table id="userResultSet" align = "left">
+                    <tr>
+                        <th>userId</th>
+                        <th>first Name</th>
+                        <th>last name</th>
+                        <th>username</th>
+                        <th>email</th>
+                    </tr>
+                </table>            
+            </div>
+    
+            <div class="history">
+                <table id="userTodosResults" align="right">
+                    <tr>
+                        <th>userId</th>
+                        <th>task</th>
+                        <th>info</th>
+                    </tr>
+                </table>            
+            </div>
+        </form>
+    <script src="./UserScript.js"></script>
+    <script src="./TodoScript.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
 </html>
