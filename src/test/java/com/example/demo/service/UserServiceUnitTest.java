@@ -53,7 +53,6 @@ public class UserServiceUnitTest {
 	@BeforeEach
 	public void init() {
 		
-		
 		validUser = new User(1, "bob", "ronson", "bobro", "bob@email.com", "password" );
 		validUserDTO = new UserDTO(1, "bob", "ronson", "bobro", "bob@email.com");
 		
@@ -63,7 +62,6 @@ public class UserServiceUnitTest {
 		users.add(validUser);
 		userDTOs.add(validUserDTO);
 	}
-	
 	@Test
 	public void readAllUsersTest() {
 		when(userRepository.findAll()).thenReturn(users);

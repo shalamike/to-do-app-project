@@ -83,7 +83,8 @@ public class UserControllerUnitTest {
 		
 		List<EntityModel<UserDTO>> entityModels = List.of(userEntityModel);
 		
-		CollectionModel<EntityModel<UserDTO>> collectionModel = CollectionModel.of(entityModels, linkTo(methodOn(UserController.class).getAllUsers()).withSelfRel());
+		CollectionModel<EntityModel<UserDTO>> collectionModel = CollectionModel.of(entityModels,
+				linkTo(methodOn(UserController.class).getAllUsers()).withSelfRel());
 		
 		when(userService.readAllUsers()).thenReturn(userDTOs);
 		when(userDTOModelAssembler.toModel(validUserDTO)).thenReturn(userEntityModel);
@@ -91,10 +92,7 @@ public class UserControllerUnitTest {
 		ResponseEntity<CollectionModel<EntityModel<UserDTO>>> response1 = 
 				new ResponseEntity<CollectionModel<EntityModel<UserDTO>>>(collectionModel, HttpStatus.OK);
 		
-		
-		
 		assertThat(response1).isEqualTo(userController.getAllUsers());
-		
 		verify(userService, times(1)).readAllUsers();
 		verify(userDTOModelAssembler, times(1)).toModel(validUserDTO);
 	}
@@ -111,7 +109,8 @@ public class UserControllerUnitTest {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Location", String.valueOf(validUserDTO.getUserId()));
 		
-		ResponseEntity<EntityModel<UserDTO>> response = ResponseEntity.created(userEntityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()).body(userEntityModel);
+		ResponseEntity<EntityModel<UserDTO>> response = ResponseEntity.created(userEntityModel.
+				getRequiredLink(IanaLinkRelations.SELF).toUri()).body(userEntityModel);
 		
 		assertThat(response).isEqualTo(userController.createUser(validUser));
 		

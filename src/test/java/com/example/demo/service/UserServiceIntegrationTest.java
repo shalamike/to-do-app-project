@@ -55,14 +55,12 @@ public class UserServiceIntegrationTest {
 		
 		userDTOs.add(validUserDTO);	
 	}
-	
 	@Test
 	public void readAllUsersTest() {
 		List<UserDTO> usersInDb = userService.readAllUsers();
 		
 		assertThat(userDTOs).isEqualTo(usersInDb);
 	}
-	
 	@Test
 	public void createUserTest() {
 		User newUser = new User("leroy", "jenkins", "lrjking", "LEEERROOOYY@email.com", "passwordnot" );
@@ -72,7 +70,6 @@ public class UserServiceIntegrationTest {
 		expectedUserDto.setUserId(savedUser.getUserId());
 		
 		assertThat(savedUser).isEqualTo(expectedUserDto);
-		
 	}
 	
 	@Test

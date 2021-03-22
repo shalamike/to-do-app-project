@@ -74,9 +74,13 @@ public class UserController {
 	public ResponseEntity<CollectionModel<EntityModel<UserDTO>>> getAllUsers(){
 		List<UserDTO> data = userService.readAllUsers();
 		
-		List<EntityModel<UserDTO>> entityModels = data.stream().map(user -> userDTOModelAssembler.toModel(user)).collect(Collectors.toList()); 
+		List<EntityModel<UserDTO>> entityModels = data.stream().
+				map(user -> userDTOModelAssembler.toModel(user)).
+				collect(Collectors.toList()); 
 		
-		CollectionModel<EntityModel<UserDTO>> collectionModel = CollectionModel.of(entityModels, linkTo(methodOn(UserController.class).getAllUsers()).withSelfRel());
+		CollectionModel<EntityModel<UserDTO>> collectionModel = CollectionModel.
+				of(entityModels, linkTo(methodOn(UserController.class).
+				getAllUsers()).withSelfRel());
 		
 		
 		return new ResponseEntity<CollectionModel<EntityModel<UserDTO>>>(collectionModel, HttpStatus.OK);
@@ -136,6 +140,7 @@ public class UserController {
 		
 		return new ResponseEntity<EntityModel<UserDTO>>(model, headers, HttpStatus.OK);
 		}
+	
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteUser(@PathVariable("id") Integer id){

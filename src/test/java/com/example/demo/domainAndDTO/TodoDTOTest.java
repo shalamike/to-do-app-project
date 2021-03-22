@@ -38,5 +38,5 @@ public class TodoDTOTest {
 		todoDto.setInfo("do another thing");
 		assertEquals(todoDto.getInfo(), "do another thing");
 	}
-
+	
 }
